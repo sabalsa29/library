@@ -15,7 +15,7 @@
         "laravel/sanctum": "^2.11",
         "twilio/sdk": "^6.15",
         "torann/hashids": "^3.0",
-        "ext-bcmath": "*",
+        "ext-gmp": "*",
         "laravel/tinker": "^2.5"
     },
     "require-dev": {
