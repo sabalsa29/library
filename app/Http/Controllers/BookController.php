@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use DataTables;
 use Hashids;
 use Illuminate\Support\Facades\Validator;
-use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Php;
 
 class BookController extends Controller
 {
