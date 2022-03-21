@@ -6,6 +6,7 @@ use App\Models\Categorias;
 use Illuminate\Http\Request;
 use DataTables;
 use Hashids;
+use Auth;
 use Illuminate\Support\Facades\Validator;
 
 class CategoriasController extends Controller
@@ -24,13 +25,12 @@ class CategoriasController extends Controller
 
     public function datatable(){
 
-        $categorias = Categorias::all();
+        $categorias = Categorias::active();
 
         return DataTables::of($categorias)->editColumn('id', function($categoria){
             $aux='';
             $aux .= '<a href="'. url('categorias/edit/'.Hashids::encode($categoria->id)) .'" class="btn btn-outline-primary m-1 btn-sm ul-btn__icon"><i class="fa fa-pen"></i></a>';
-            //$aux .='<input type="hidden" name="algo" value="'.($libro->id).'" id="pregunta">';
-            $aux .= '<button onclick="delete_book()" class="btn btn-outline-danger m-1 btn-sm ul-btn__icon" id="btn_eliminar" data-inputHidden="'. url('categorias/edit/'.Hashids::encode($categoria->id)) .'" data-value="'. url('book/edit/'.Hashids::encode($categoria->id)) .'" id ="btn_eliminar"><i class="fa fa-trash"></i></button >';
+            $aux .= '<a href="'. url('categorias/eliminar?'."&id=".Hashids::encode($categoria->id)) . '" class="btn btn-outline-danger m-1 btn-sm ul-btn__icon"><i class="fa fa-trash"></i></a>';
 
             return $aux;
         })->escapeColumns([])->make(TRUE);
@@ -62,5 +62,19 @@ class CategoriasController extends Controller
 
         return redirect('/categorias');
 
+    }
+    public function eliminar(Request $req){
+
+        if(Auth::user()->tipo==2){
+            return redirect('/');
+        }
+
+        $id     = Hashids::decode($req->id);
+
+        $categoria   = Categorias::find($id[0]);
+        $categoria->estatus  =0;
+        $categoria->save();
+
+        return redirect('/categorias');
     }
 }

@@ -29,17 +29,17 @@
                     <div class="form-group">
                         {!! Form::label('Nombre del libro: ', null ,array('class'=>'ul-form__label ul-form--margin col-lg-3 col-form-label')) !!}
                         <div class="col-lg-4">
-                        {!! Form::text('name',$libro->name ,array( 'class' => 'form-control', 'required')) !!}
+                        {!! Form::text('name',$libro->name ,array( 'class' => 'form-control', 'required','onkeypress'=>"return validar(event);")) !!}
                         </div>
                     </div>
                     <div class="form-group">
                         {!! Form::label('Nombre del Autor: ', null ,array('class'=>'ul-form__label ul-form--margin col-lg-2 col-form-label')) !!}
                         <div class="col-lg-4">
-                        {!! Form::text('name_autor',$libro->name_autor ,array( 'class' => 'form-control', 'required')) !!}
+                        {!! Form::text('name_autor',$libro->name_autor ,array( 'class' => 'form-control', 'required','onkeypress'=>"return validar(event);")) !!}
                         </div>
                     </div>
                     <div class="form-group">
-                        {!! Form::label('Nombre del Autor: ', null ,array('class'=>'ul-form__label ul-form--margin col-lg-2 col-form-label')) !!}
+                        {!! Form::label('Fecha Publicaciòn: ', null ,array('class'=>'ul-form__label ul-form--margin col-lg-2 col-form-label')) !!}
                         <div class="col-lg-4">
                         {!! Form::date('date',date('Y-m-d',strtotime($libro->date)),array( 'class' => 'form-control', 'required')) !!}
                         </div>
@@ -58,5 +58,19 @@
             </div>
         </div>
     </div>
+
+@endsection
+
+@section('script')
+
+    <script>
+      function validar(e) { // 1
+            tecla = (document.all) ? e.keyCode : e.which; // 2
+            if (tecla==8) return true; // 3
+            patron =/[A-Za-z\s.,-]/; // 4
+            te = String.fromCharCode(tecla); // 5
+            return patron.test(te); // 6
+    }
+    </script>
 
 @endsection

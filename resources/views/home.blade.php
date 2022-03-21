@@ -23,17 +23,11 @@
                                     <th>Titulo</th>
                                     <th>Autor</th>
                                     <th>Fecha Publicaciòn</th>
+                                    <th>Disponibilidad</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td>123421</td>
-                                    <td>terrror</td>
-                                    <td>Gas</td>
-                                    <td> Arturo</td>
-                                    <td>443</td>
-                                </tr>
+
                             </tbody>
                         </table>
                     </div>
@@ -42,4 +36,59 @@
         </div>
     </div>
 </div>
+
 @endsection
+@section('script')
+    <script src="{{asset('assets/js/vendor/datatables.min.js')}}"></script>
+    <script>
+    $('#tablaLibrosDisponibles').DataTable({
+      processing: true,
+      serverSide: true,
+      pageLength:5,
+      stateSave: true,
+      ajax: "{!!URL::to('library/datatable')!!}",
+      columnDefs: [{
+            "defaultContent": "N/D",
+            "targets": "_all"
+        }],
+      columns: [
+          {data: 'id', name: 'id'},
+          {data: 'codigo', name: 'codigo'},
+          {data: 'categoria_id', name: 'categoria_id'},
+          {data: 'name', name: 'name'},
+          {data: 'name_autor', name: 'name_autor'},
+          {data: 'date', name: 'date'},
+          {data: 'usuario', name: 'usuario'},
+      ],
+      order: [],
+      language: {
+                   "sProcessing":     "Procesando...",
+                    "sLengthMenu":     "Mostrar _MENU_ registros",
+                    "sZeroRecords":    "No se encontraron resultados",
+                    "sEmptyTable":     "Ningún dato disponible en esta tabla",
+                    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                    "sInfoPostFix":    "",
+                    "sSearch":         "Buscar:",
+                    "sUrl":            "",
+                    "sInfoThousands":  ",",
+                    "sLoadingRecords": "Cargando...",
+                    "oPaginate": {
+                        "sFirst":    "Primero",
+                        "sLast":     "Último",
+                        "sNext":     "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    }
+      }
+
+      });
+
+</script>
+
+@endsection
+

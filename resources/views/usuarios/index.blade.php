@@ -8,9 +8,9 @@
         <div class="col-md-12">
             <br>
             <div class="breadcrumb" >
-                <h1>Categorias</h1>
+                <h1>Usuarios</h1>
             </div>
-            <a href="/categorias/create" class="btn btn-primary">Nueva Categoria</a>
+            <a href="/usuarios/create" class="btn btn-primary">Nuevo Usuario</a>
             <div>
                 <br>
 
@@ -18,14 +18,13 @@
             <div class="card text-left">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="tablaCategotias" class="display table table-striped table-bordered" style="width:100%">
+                        <table id="tablaUsuarios" class="display table table-striped table-bordered" style="width:100%">
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th>Código</th>
+                                    <th>Tipo</th>
                                     <th>Nombre</th>
-                                    <th>Descripción</th>
-
+                                    <th>Correo</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -40,23 +39,24 @@
 @endsection
 @section('script')
     <script src="{{asset('assets/js/vendor/datatables.min.js')}}"></script>
+
 <script>
-    $('#tablaCategotias').DataTable({
+    $('#tablaUsuarios').DataTable({
       processing: true,
       serverSide: true,
       lengthChange: false,
       pageLength:5,
       stateSave: true,
-      ajax: "{!!URL::to('categorias/datatable')!!}",
+      ajax: "{!!URL::to('usuarios/datatable')!!}",
       columnDefs: [{
             "defaultContent": "N/D",
             "targets": "_all"
         }],
       columns: [
           {data: 'id', name: 'id'},
-          {data: 'codigo', name: 'codigo'},
+          {data: 'tipo', name: 'tipo'},
           {data: 'name', name: 'name'},
-          {data: 'description', name: 'description'},
+          {data: 'email', name: 'email'},
       ],
       order: [],
       language: {

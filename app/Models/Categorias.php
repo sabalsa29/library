@@ -13,4 +13,9 @@ class Categorias extends Model
         'codigo',
         'estatus'
     ];
+
+    public function scopeActive($query)
+    {
+        return $query->where('estatus', '<>', 0);
+    }
 }

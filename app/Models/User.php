@@ -21,7 +21,14 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'tipo'
     ];
+
+    public function scopeActive($query)
+    {
+        return $query->where('estatus', '<>', 0);
+    }
+
 
     /**
      * The attributes that should be hidden for serialization.

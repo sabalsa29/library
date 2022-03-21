@@ -3,11 +3,14 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="breadcrumb">
-        <h1>Libros</h1>
-    </div>
-    <div class="row mb-4">
-        <div class="col-md-12 mb-4">
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <br>
+            <div class="breadcrumb" >
+                <h1>Libros</h1>
+            </div>
             <a href="/book/create" class="btn btn-primary">Nuevo Libro</a>
             <div>
                 <br>
@@ -35,28 +38,11 @@
             </div>
         </div>
     </div>
-
+</div>
 @endsection
 @section('script')
     <script src="{{asset('assets/js/vendor/datatables.min.js')}}"></script>
-
     <script>
-        function delete_bookd() {
-           // let id  =  $('#btn_delete').val();
-            var id = $(this).data('inputHidden');
-            var valor = $(this).data('value');
-            console.log(id, valor);
-        }
-        function delete_book(){
-
-                var id = $('#btn_eliminar').data('inputHidden');
-                var valor = $('#btn_eliminar').data('value');
-
-                console.log(id, valor)
-               // $('#pregunta-'+id).val(valor);
-            }
-    </script>
-<script>
     $('#tablaLibros').DataTable({
       processing: true,
       serverSide: true,

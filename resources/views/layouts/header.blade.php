@@ -9,28 +9,32 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/">Inicio</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/book">Libros</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/categorias">Categorias</a>
-        </li>
 
+        @if (Auth::user()->tipo==1)
+            <li class="nav-item">
+            <a class="nav-link" href="/book">Libros</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/categorias">Categorias</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/usuarios">Usuarios</a>
+            </li>
+        @endif
       </ul>
       <div class="btn-group" role="group">
     <button id="btnGroupDrop1" type="button" class="btn btn-muted dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-      Arturo Sabalsa Espino
+    {{ Auth::user()->name }}
     </button>
     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
       <li>
 
       <a class="dropdown-item" href="javascript:void();" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="uil uil-sign-out-alt font-size-18 align-middle mr-1 text-muted"></i> <span class="align-middle">Salir</span></a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
 
       </li>
-      <li><a class="dropdown-item" href="#">Nuevo Usuario</a></li>
     </ul>
   </div>
     </div>
