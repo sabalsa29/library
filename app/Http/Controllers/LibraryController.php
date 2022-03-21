@@ -107,7 +107,8 @@ class LibraryController extends Controller
         return redirect('/');
     }
     public function MessageSender($usuario,$libro,$telefono, $aux){
-
+        //Estas variables se encuentran dentro del archivo .env
+        //Ojo al trabajar en produccion
         $account_sid    = getenv("TWILIO_ACCOUNT_SID");
         $auth_token     = getenv("TWILIO_AUTH_TOKEN");
         $twilio_number  = getenv("TWILIO_NUMBER");
