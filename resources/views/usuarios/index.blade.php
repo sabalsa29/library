@@ -22,9 +22,9 @@
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th>Tipo</th>
                                     <th>Nombre</th>
                                     <th>Correo</th>
+                                    <th>Telefono</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -54,9 +54,9 @@
         }],
       columns: [
           {data: 'id', name: 'id'},
-          {data: 'tipo', name: 'tipo'},
           {data: 'name', name: 'name'},
           {data: 'email', name: 'email'},
+          {data: 'phone', name: 'phone'},
       ],
       order: [],
       language: {

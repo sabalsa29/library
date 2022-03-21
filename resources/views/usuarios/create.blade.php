@@ -2,13 +2,18 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="breadcrumb">
-        <h4>Agregando Usuario</h4>
-    </div>
-    <div class="row mb-4">
-        <div class="col-md-12 mb-4">
-            <div class="card text-left">
-                <div class="card-body">
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card-body">
+            <div>
+                <br>
+                <hr>
+                <h4>Creando Usuario</h4>
+                <br>
+
+            </div>
                     {!! Form::open(array('url'=>'usuarios/store',  'class'=>'form-horizontal','role'=>'form')) !!}
 
                     <div class="form-group">
@@ -24,20 +29,11 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        {!! Form::label('Telefono: ', null ,array('class'=>'ul-form__label ul-form--margin col-lg-3 col-form-label')) !!}
                         <div class="col-lg-4">
-                        <label for="inputPassword5" class="form-label">Password:</label>
-                            <input type="password" name="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
-                                <div id="passwordHelpBlock" class="form-text">
-                            </div>
+                        {!! Form::text('phone',null,array( 'class' => 'form-control','maxlength'=>"10",'required','onkeypress'=>"return validNumero(event);")) !!}
                         </div>
                     </div>
-                    <div class="form-group" >
-                        {!! Form::label('Tipo', null ,array('class'=>'ul-form__label ul-form--margin col-lg-2 col-form-label')) !!}
-                        <div class="col-md-4">
-                            {!! Form::select('tipo',$tipos,null,array( 'class' => 'form-control', 'placeholder' => 'Selecciona tipo' , 'required')) !!}
-                        </div>
-                    </div>
-
                     <div>
                         <br>
                     </div>
@@ -64,6 +60,20 @@
             te = String.fromCharCode(tecla); // 5
             return patron.test(te); // 6
     }
+    </script>
+     <script>
+        function validNumero(evt) {
+               var code = evt.which ? evt.which : evt.keyCode;
+               if (code == 8) {
+                   //backspace
+                   return true;
+               } else if (code >= 48 && code <= 57) {
+                   //is a number
+                   return true;
+               } else {
+                   return false;
+               }
+           }
     </script>
 
 @endsection

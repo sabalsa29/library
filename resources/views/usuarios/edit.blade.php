@@ -2,12 +2,17 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="breadcrumb">
-        <h4>Editando Usuario</h4>
-    </div>
-    <div class="row mb-4">
-        <div class="col-md-12 mb-4">
-            <div class="card text-left">
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+        <div>
+            <br>
+            <hr>
+            <h4>Editando Usuario</h4>
+            <br>
+
+        </div>
                 <div class="card-body">
                     {!! Form::open(array('url'=>'usuarios/update',  'class'=>'form-horizontal','role'=>'form')) !!}
 
@@ -24,17 +29,9 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        {!! Form::label('Telefono: ', null ,array('class'=>'ul-form__label ul-form--margin col-lg-3 col-form-label')) !!}
                         <div class="col-lg-4">
-                        <label for="inputPassword5" class="form-label">Password:</label>
-                            <input type="text" value="" name="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
-                                <div id="passwordHelpBlock" class="form-text">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group" >
-                        {!! Form::label('Tipo', null ,array('class'=>'ul-form__label ul-form--margin col-lg-2 col-form-label')) !!}
-                        <div class="col-md-4">
-                            {!! Form::select('tipo',$tipos,$usuario->tipo,array( 'class' => 'form-control', 'placeholder' => 'Selecciona tipo' , 'required')) !!}
+                        {!! Form::text('phone',$usuario->phone,array( 'class' => 'form-control','maxlength'=>"10",'required','onkeypress'=>"return validNumero(event);")) !!}
                         </div>
                     </div>
 
@@ -65,6 +62,20 @@
             te = String.fromCharCode(tecla); // 5
             return patron.test(te); // 6
     }
+    </script>
+    <script>
+        function validNumero(evt) {
+               var code = evt.which ? evt.which : evt.keyCode;
+               if (code == 8) {
+                   //backspace
+                   return true;
+               } else if (code >= 48 && code <= 57) {
+                   //is a number
+                   return true;
+               } else {
+                   return false;
+               }
+           }
     </script>
 
 @endsection

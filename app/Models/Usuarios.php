@@ -7,5 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Usuarios extends Model
 {
-    use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'email',
+        'estatus',
+        'phone'
+    ];
+
+    public function scopeActive($query)
+    {
+        return $query->where('estatus', '<>', 0);
+    }
 }

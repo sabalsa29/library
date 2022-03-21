@@ -2,13 +2,16 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="breadcrumb">
-        <h4>Editando Categoria</h4>
-    </div>
-    <div class="row mb-4">
-        <div class="col-md-12 mb-4">
-            <div class="card text-left">
-                <div class="card-body">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card-body">
+            <div>
+                <br>
+                <hr>
+                <h4>Editando Categoria</h4>
+                <br>
+            </div>
                     {!! Form::open(array('url'=>'categorias/update',  'class'=>'form-horizontal','role'=>'form')) !!}
 
                     <div class="form-group">

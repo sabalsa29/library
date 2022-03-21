@@ -33,6 +33,11 @@ class CategoriasController extends Controller
             $aux .= '<a href="'. url('categorias/eliminar?'."&id=".Hashids::encode($categoria->id)) . '" class="btn btn-outline-danger m-1 btn-sm ul-btn__icon"><i class="fa fa-trash"></i></a>';
 
             return $aux;
+        })->editColumn('codigo', function($categoria){
+            $aux    ='';
+            $aux    =str_pad($categoria->id, 4, "0", STR_PAD_LEFT);
+
+            return $aux;
         })->escapeColumns([])->make(TRUE);
     }
 

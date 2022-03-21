@@ -2,17 +2,16 @@
 @extends('layouts.master')
 
 @section('content')
-<div>
-    <br>
-
-</div>
-    <div class="breadcrumb" style="margin: 20">
-        <h4>Editando libro</h4>
-    </div>
-    <div class="row mb-4">
-        <div class="col-md-12 mb-4">
-            <div class="card text-left">
-                <div class="card-body">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card-body">
+            <div>
+                <br>
+                <hr>
+                <h4>Editando Libro</h4>
+                <br>
+            </div>
                     {!! Form::open(array('url'=>'book/update',  'class'=>'form-horizontal','role'=>'form')) !!}
                     <div class="form-group">
                         {!! Form::label('Codigo: ', null ,array('class'=>'ul-form__label ul-form--margin col-lg-3 col-form-label')) !!}

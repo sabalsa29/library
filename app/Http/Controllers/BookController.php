@@ -20,9 +20,6 @@ class BookController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->tipo==2){
-            return redirect('/');
-        }
 
         return view('book.index');
     }
@@ -47,6 +44,19 @@ class BookController extends Controller
             }else{
                 $aux='N/D';
             }
+            return $aux;
+        })->addColumn('fecha', function($libro){
+            $aux    ='';
+            if($libro->date != null){
+                $aux= date('d-m-Y', strtotime($libro->date));
+            }else{
+                $aux='N/D';
+            }
+            return $aux;
+        })->editColumn('codigo', function($libro){
+            $aux    ='';
+            $aux    =str_pad($libro->id, 4, "0", STR_PAD_LEFT);
+
             return $aux;
         })->escapeColumns([])->make(TRUE);
 

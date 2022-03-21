@@ -59,7 +59,7 @@
           {data: 'categoria_id', name: 'categoria_id'},
           {data: 'name', name: 'name'},
           {data: 'name_autor', name: 'name_autor'},
-          {data: 'date', name: 'date'},
+          {data: 'fecha', name: 'fecha'},
       ],
       order: [],
       language: {

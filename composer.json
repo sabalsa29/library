@@ -13,6 +13,7 @@
         "laravelcollective/html": "^6.2.0",
         "yajra/laravel-datatables-oracle":"~9.0",
         "laravel/sanctum": "^2.11",
+        "twilio/sdk": "^6.15",
         "torann/hashids": "^3.0",
         "laravel/tinker": "^2.5"
     },

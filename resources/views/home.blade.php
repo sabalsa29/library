@@ -45,6 +45,7 @@
       processing: true,
       serverSide: true,
       pageLength:5,
+      lengthChange: false,
       stateSave: true,
       ajax: "{!!URL::to('library/datatable')!!}",
       columnDefs: [{
